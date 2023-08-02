@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2rem 1.5rem;
+    padding: 0rem 1.5rem;
 }
 
 .main-header__right {
@@ -134,6 +134,11 @@
 .main-header__profile:hover {
     background-color: var(--primary-color);
     color: var(--white-color);
+}
+
+.main-header__logo{
+    width: 180px;
+    height: 120px;
 }
 
 /* Finish Navbar Styles */
