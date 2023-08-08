@@ -7,7 +7,7 @@ export default function NavBar() {
                 <div class="main-header__content">
                     <div class="main-header__right">
                         <img
-                            src='images/logo/code-store.png'
+                            src='/images/logo/code-store.png'
                             class="main-header__logo"
                             alt="لوگوی سبزلرن"
                         />
