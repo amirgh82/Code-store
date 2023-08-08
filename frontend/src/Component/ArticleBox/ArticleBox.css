@@ -11,7 +11,8 @@
 
 .article-card__img {
   border-radius: 1rem 1rem 0 0;
-
+  width: 400px;
+  height: 300px;
 }
 
 .article-card__content {
@@ -40,8 +41,4 @@
 .article-card__btn:hover {
   color: var(--white-color);
   background-color: var(--primary-color);
-}
-
-.article-card__link-img {
-  width: 300px;
 }
