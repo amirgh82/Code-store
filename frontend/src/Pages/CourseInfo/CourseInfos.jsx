@@ -4,7 +4,7 @@ import TopBar from '../../Component/TopBar/TopBar'
 import NavBar from '../../Component/NavBar/NavBar'
 import Footer from '../../Component/Footer/Footer'
 import Breadcrumb from '../../Component/Breadcrumb/Breadcrumb'
-
+import CourseDetailBox from '../../Component/CourseDetailBox/CourseDetailBox'
 
 export default function CourseInfos() {
     return (
@@ -59,6 +59,39 @@ export default function CourseInfos() {
                     </div>
                 </div>
             </section>
+
+            <main class="main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="course">
+                                <div class="course-boxes">
+                                    <div class="row">
+                                        <CourseDetailBox
+                                            icon='graduation-cap'
+                                            title='وضعیت دوره:'
+                                            text="به اتمام رسیده"
+                                        />
+                                        <CourseDetailBox
+                                            icon="clock"
+                                            title=" مدت زمان دوره:"
+                                            text="19 ساعت"
+                                        />
+                                        <CourseDetailBox
+                                            icon="calendar-alt"
+                                            title="آخرین بروزرسانی:"
+                                            text="1401/03/02"
+                                        />
+                                        <CourseDetailBox />
+                                        <CourseDetailBox />
+                                        <CourseDetailBox />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
             <Footer />
         </>
 
