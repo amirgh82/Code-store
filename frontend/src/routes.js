@@ -3,6 +3,7 @@ import Category from './Pages/Category/Category';
 import ArticleInfo from './Pages/ArticleInfo/ArticleInfo';
 import CourseInfos from './Pages/CourseInfo/CourseInfos';
 import Courses from './Pages/Courses/Courses'
+import Login from './Pages/Login/Login';
 
 const routes = [
     { path: '/', element: <Index /> },
@@ -10,6 +11,8 @@ const routes = [
     { path: 'category-info/:categoryName', element: <Category /> },
     { path: 'article-info/:articleName', element: <ArticleInfo /> },
     { path: '/courses', element: <Courses /> },
+    { path: '/login', element: <Login /> },
+    // { path: '/register', element: <Register /> },
 ]
 
 export default routes;
