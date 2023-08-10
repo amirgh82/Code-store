@@ -5,6 +5,7 @@ import NavBar from '../../Component/NavBar/NavBar'
 import Footer from '../../Component/Footer/Footer'
 import Breadcrumb from '../../Component/Breadcrumb/Breadcrumb'
 import CourseDetailBox from '../../Component/CourseDetailBox/CourseDetailBox'
+import CommentsTextArea from '../../Component/CommentsTextArea/CommentsTextArea'
 
 export default function CourseInfos() {
     return (
@@ -341,8 +342,10 @@ export default function CourseInfos() {
                                 </div>
 
                                 {/* Finish Teacher Details */}
+                                <CommentsTextArea />
                             </div>
                         </div>
+
 
                         <div class="col-4">
                             <div class="courses-info">
