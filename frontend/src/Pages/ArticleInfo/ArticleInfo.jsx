@@ -3,6 +3,7 @@ import TopBar from '../../Component/TopBar/TopBar'
 import NavBar from '../../Component/NavBar/NavBar'
 import Footer from '../../Component/Footer/Footer'
 import Breadcrumb from '../../Component/Breadcrumb/Breadcrumb'
+import CommentsTextArea from '../../Component/CommentsTextArea/CommentsTextArea'
 
 
 import "./ArticleInfo.css";
@@ -236,7 +237,7 @@ export default function ArticleInfo() {
                                     </div>
                                 </div>
                             </div>
-
+                            <CommentsTextArea />
                         </div>
                         <div class="col-4"></div>
                     </div>
