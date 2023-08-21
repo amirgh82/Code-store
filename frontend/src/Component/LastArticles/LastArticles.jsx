@@ -5,8 +5,8 @@ import ArticleBox from "../ArticleBox/ArticleBox";
 
 export default function LastArticles() {
   return (
-    <section class="articles">
-      <div class="container">
+    <section className="articles">
+      <div className="container">
 
         <SectionHeader
           title="جدیدترین مقاله ها"
