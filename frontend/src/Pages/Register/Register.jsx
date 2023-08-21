@@ -5,6 +5,7 @@ import TopBar from './../../Component/TopBar/TopBar'
 import NavBar from './../../Component/NavBar/NavBar'
 
 import "./Register.css";
+import Input from "../../Component/Form/Input";
 
 export default function Register() {
   return (
@@ -24,26 +25,29 @@ export default function Register() {
           </div>
           <form action="#" class="login-form">
             <div class="login-form__username">
-              <input
-                class="login-form__username-input"
+              <Input
+                className="login-form__username-input"
                 type="text"
                 placeholder="نام کاربری"
+                element='input'
               />
               <i class="login-form__username-icon fa fa-user"></i>
             </div>
             <div class="login-form__password">
-              <input
-                class="login-form__password-input"
-                type="text"
+              <Input
+                className="login-form__password-input"
+                type="email"
                 placeholder="آدرس ایمیل"
+                element='input'
               />
               <i class="login-form__password-icon fa fa-envelope"></i>
             </div>
             <div class="login-form__password">
-              <input
-                class="login-form__password-input"
-                type="text"
-                placeholder="رمز عبور"
+              <Input
+                className="login-form__password-input"
+                type="password"
+                placeholder="آدرس ایمیل"
+                element='input'
               />
               <i class="login-form__password-icon fa fa-lock-open"></i>
             </div>
