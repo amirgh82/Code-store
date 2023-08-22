@@ -7,6 +7,14 @@ import "./Login.css";
 import Input from "../../Component/Form/Input";
 import Button from "../../Component/Form/Button";
 
+import {
+  requiredValidator,
+  minValidator,
+  maxValidator,
+  emailValidator
+} from '../../validators/rules'
+
+
 export default function Login() {
 
   const userLogin = (event) => {
@@ -37,6 +45,12 @@ export default function Login() {
                 type="text"
                 placeholder="نام کاربری یا آدرس ایمیل"
                 element='input'
+                validations={[
+                  requiredValidator(),
+                  minValidator(8),
+                  maxValidator(20),
+                  emailValidator()
+                ]}
               />
 
               <i className="login-form__username-icon fa fa-user"></i>
@@ -47,6 +61,11 @@ export default function Login() {
                 type="password"
                 placeholder="رمز عبور"
                 element='input'
+                validations={[
+                  requiredValidator(),
+                  minValidator(8),
+                  maxValidator(18),
+                ]}
               />
               <i className="login-form__password-icon fa fa-lock-open"></i>
             </div>
