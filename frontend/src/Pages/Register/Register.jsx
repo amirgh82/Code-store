@@ -20,6 +20,10 @@ export default function Register() {
       value: '',
       isValid: false
     },
+    phone: {
+      value: "",
+      isValid: false,
+    },
     email: {
       value: '',
       isValid: false
@@ -32,6 +36,23 @@ export default function Register() {
 
   const registerNewUser = (event) => {
     event.preventDefault()
+
+    const newUserInfos = {
+      name: formState.inputs.name.value,
+      phone: formState.inputs.phone.value,
+      username: formState.inputs.username.value,
+      email: formState.inputs.email.value,
+      password: formState.inputs.password.value,
+      confirmPassword: formState.inputs.password.value
+    }
+
+    fetch(`http://localhost:4000/v1/auth/register`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUserInfos)
+    }).then(res => console.log(res))
   }
 
   return (
@@ -82,6 +103,18 @@ export default function Register() {
               />
               <i className="login-form__username-icon fa fa-user"></i>
             </div>
+            <div className="login-form__username">
+              <Input
+                type="text"
+                placeholder="شماره تماس"
+                className="login-form__username-input"
+                element="input"
+                id="phone"
+                onInputHandler={onInputHandler}
+                validations={[minValidator(10), maxValidator(12)]}
+              />
+              <i className="login-form__username-icon fa fa-user"></i>
+            </div>
             <div className="login-form__password">
               <Input
                 className="login-form__password-input"
@@ -116,7 +149,7 @@ export default function Register() {
             </div>
             <Button
               className={`login-form__btn ${formState.isFormValid ? 'login-form__btn-success' : 'login-form__btn-error'}`}
-              type="submit" onClick={registerNewUser} disabled={false}>
+              type="submit" onClick={registerNewUser} disabled={!formState.isFormValid}>
               <i className="login-form__btn-icon fa fa-user-plus"></i>
               <span className="login-form__btn-text">عضویت</span>
             </Button>
