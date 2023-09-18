@@ -105,7 +105,7 @@ export default function Register() {
             </div>
             <div className="login-form__username">
               <Input
-                type="text"
+                type="number"
                 placeholder="شماره تماس"
                 className="login-form__username-input"
                 element="input"
