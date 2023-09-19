@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Footer from './../../Component/Footer/Footer'
 import TopBar from './../../Component/TopBar/TopBar'
 import NavBar from './../../Component/NavBar/NavBar'
@@ -9,10 +9,13 @@ import Button from "../../Component/Form/Button";
 import { useForm } from "../../hooks/useForm";
 import { requiredValidator, minValidator, maxValidator, emailValidator } from '../../validators/rules'
 import AuthContext from "../../context/authContext";
+import swal from 'sweetalert2'
 
 export default function Login() {
 
   const authContext = useContext(AuthContext)
+
+  const navigate = useNavigate()
 
   const [formState, onInputHandler] = useForm({
     username: {
@@ -48,13 +51,26 @@ export default function Login() {
         res.json()
       }
     }).then(result => {
+      swal.fire({
+        title: "با موفقیت لاگین کردید",
+        icon: 'success',
+        confirmButtonText: 'ورود به پنل',
+      }).then(value =>{
+        navigate('/')
+      })
       authContext.login({}, result.accesstoken)
     })
       .catch(err => {
-        console.log(err);
+        swal.fire({
+          title: "کاربر یافت نشد.",
+          icon: 'error',
+          confirmButtonText: 'تلاش دوباره',
+        })
       })
 
   }
+
+
 
   return (
     <>
