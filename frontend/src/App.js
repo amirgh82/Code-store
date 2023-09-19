@@ -13,6 +13,8 @@ function App() {
   const [userInfos, setUserInfos] = useState({})
 
   const login = useCallback((userInfos, token) => {
+    console.log(userInfos);
+    console.log(token);
     setToken(token)
     setIsLoggedIn(true)
     setUserInfos(userInfos)
@@ -23,7 +25,7 @@ function App() {
     setToken(null)
     setUserInfos({})
     localStorage.removeItem('user')
-  },[])
+  })
 
 
   useEffect(() => {
@@ -36,10 +38,11 @@ function App() {
         }
       }).then(res => res.json())
         .then(userData => {
+          console.log(userData);
           setIsLoggedIn(true)
           setUserInfos(userData)
         })
-    } 
+    }
 
   }, [login])
 
