@@ -57,7 +57,7 @@ export default function Register() {
       body: JSON.stringify(newUserInfos)
     }).then(res => res.json())
       .then(result => {
-        authContext.login(result.user, result.accessTokken)
+        authContext.login(result.user, result.accessToken)
       })
   }
 
@@ -154,6 +154,7 @@ export default function Register() {
               <i className="login-form__password-icon fa fa-lock-open"></i>
             </div>
             <Button
+              to='/'
               className={`login-form__btn ${formState.isFormValid ? 'login-form__btn-success' : 'login-form__btn-error'}`}
               type="submit" onClick={registerNewUser} disabled={!formState.isFormValid}>
               <i className="login-form__btn-icon fa fa-user-plus"></i>
