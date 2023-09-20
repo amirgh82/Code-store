@@ -181,3 +181,8 @@
 }
 
 /* ============================== Login-Register Style ============================== */
+
+
+.recaptcha-parent{
+  margin:2rem 0;
+}

@@ -128,8 +128,7 @@ export default function Login() {
               />
               <i className="login-form__password-icon fa fa-lock-open"></i>
             </div>
-            <div className="login-form__password">
-
+            <div className="login-form__password recaptcha-parent">
               <ReCAPTCHA sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" onChange={onChangeHandler} />
             </div>
             <Button
