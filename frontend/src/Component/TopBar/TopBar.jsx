@@ -10,11 +10,9 @@ export default function TopBar() {
             .then(res => res.json())
             .then(topbarData => {
                 setAllTopbarLinks(topbarData)
-
             })
     }, [])
 
-    console.log(allTopbarLinks);
 
     const getRandomItemsFromArray = (arr, randomCount) => {
         const shuffeld = [...arr].sort(() => 0.5 - Math.random())
@@ -30,44 +28,12 @@ export default function TopBar() {
                         <ul className="top-bar__menu">
 
                             {getRandomItemsFromArray(allTopbarLinks, 5).map(link => (
-                                <li className="top-bar__item">
+                                <li className="top-bar__item" key={link._id}>
                                     <a href={link.href} className="top-bar__link">
                                         {link.title}
                                     </a>
                                 </li>
                             ))}
-
-
-                            {/* <li className="top-bar__item">
-                                <a href="#" className="top-bar__link">
-                                    آموزش Css
-                                </a>
-                            </li>
-                            <li className="top-bar__item">
-                                <a href="#" className="top-bar__link">
-                                    آموزش جاوا اسکریپت
-                                </a>
-                            </li>
-                            <li className="top-bar__item">
-                                <a href="#" className="top-bar__link">
-                                    آموزش بوت استرپ
-                                </a>
-                            </li>
-                            <li className="top-bar__item">
-                                <a href="#" className="top-bar__link">
-                                    آموزش پایتون
-                                </a>
-                            </li>
-                            <li className="top-bar__item">
-                                <a href="#" className="top-bar__link">
-                                    آموزش ری‌اکت
-                                </a>
-                            </li>
-                            <li className="top-bar__item">
-                                <a href="#" className="top-bar__link">
-                                    20,000 تومان
-                                </a>
-                            </li> */}
                         </ul>
                     </div>
                     <div className="top-bar__left">
