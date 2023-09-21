@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './CourseInfos.css'
 import TopBar from '../../Component/TopBar/TopBar'
 import NavBar from '../../Component/NavBar/NavBar'
@@ -12,18 +12,27 @@ import { useParams } from 'react-router-dom'
 export default function CourseInfos() {
 
 
+    const [comments, setComments] = useState([])
+    const [sessions, setSessions] = useState([])
+    const [courseDetail, setCouresDetail] = useState({})
+
+
     const { courseName } = useParams()
 
     useEffect(() => {
         fetch(`http://localhost:4000/v1/courses/${courseName}`, {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Authorization': `Bearer ${JSON.parse(localStorage.getItem('user')).token}`
             }
         }).then(res => res.json())
             .then(courseInfo => {
                 console.log(courseInfo);
+                setComments(courseInfo.comments)
+                setSessions(courseInfo.sessions)
+                setCouresDetail(courseInfo)
             })
+
     }, [])
 
 
@@ -45,15 +54,10 @@ export default function CourseInfos() {
                                 آموزش برنامه نویسی فرانت اند
                             </a>
                             <h1 className="course-info__title">
-                                آموزش 20 کتابخانه جاوااسکریپت برای بازار کار
+                                {courseDetail.name}
                             </h1>
                             <p className="course-info__text">
-                                امروزه کتابخانه‌ها کد نویسی را خیلی آسان و لذت بخش تر کرده اند.
-                                به قدری که حتی امروزه هیچ شرکت برنامه نویسی پروژه های خود را با
-                                Vanilla Js پیاده سازی نمی کند و همیشه از کتابخانه ها و فریمورک
-                                های موجود استفاده می کند. پس شما هم اگه میخواید یک برنامه نویس
-                                عالی فرانت اند باشید، باید کتابخانه های کاربردی که در بازار کار
-                                استفاده می شوند را به خوبی بلد باشید
+                                {courseDetail.description}
                             </p>
                             <div className="course-info__social-media">
                                 <a href="#" className="course-info__social-media-item">
