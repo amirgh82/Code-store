@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './NavBar.css'
 import { Link } from 'react-router-dom'
 import AuthContext from '../../context/authContext'
@@ -7,6 +7,17 @@ import AuthContext from '../../context/authContext'
 export default function NavBar() {
 
     const authContext = useContext(AuthContext)
+
+    const [allmenus, setAllmenus] = useState([])
+
+    useEffect(() => {
+        fetch(`http://localhost:4000/v1/menus`)
+            .then(res => res.json())
+            .then(menus => {
+                setAllmenus(menus)
+                console.log(menus);
+            })
+    }, [])
 
 
     return (
@@ -27,118 +38,31 @@ export default function NavBar() {
                                 </a>
                             </li>
 
-                            <li className="main-header__item">
-                                <a href="#" className="main-header__link">
-                                    فرانت اند
-                                    <i className="fas fa-angle-down main-header__link-icon"></i>
-                                    <ul className="main-header__dropdown">
-                                        <li className="main-header__dropdown-item">
-                                            <a href="#" className="main-header__dropdown-link">
-                                                آموزش Html
-                                            </a>
-                                        </li>
-                                        <li className="main-header__dropdown-item">
-                                            <a href="#" className="main-header__dropdown-link">
-                                                آموزش Css
-                                            </a>
-                                        </li>
-                                        <li className="main-header__dropdown-item">
-                                            <a href="#" className="main-header__dropdown-link">
-                                                آموزش جاوا اسکریپت
-                                            </a>
-                                        </li>
-                                        <li className="main-header__dropdown-item">
-                                            <a href="#" className="main-header__dropdown-link">
-                                                آموزش FlexBox
-                                            </a>
-                                        </li>
-                                        <li className="main-header__dropdown-item">
-                                            <a href="#" className="main-header__dropdown-link">
-                                                آموزش جامع ری‌اکت
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </a>
-                            </li>
-                            <li className="main-header__item">
-                                <a href="#" className="main-header__link">
-                                    امنیت
-                                    <i className="fas fa-angle-down main-header__link-icon"></i>
-                                    <ul className="main-header__dropdown">
-                                        <li className="main-header__dropdown-item">
-                                            <a href="#" className="main-header__dropdown-link">
-                                                آموزش کالی لینوکس
-                                            </a>
-                                        </li>
-                                        <li className="main-header__dropdown-item">
-                                            <a href="#" className="main-header__dropdown-link">
-                                                آموزش پایتون سیاه
-                                            </a>
-                                        </li>
-                                        <li className="main-header__dropdown-item">
-                                            <a href="#" className="main-header__dropdown-link">
-                                                آموزش جاوا اسکریپت سیاه
-                                            </a>
-                                        </li>
-                                        <li className="main-header__dropdown-item">
-                                            <a href="#" className="main-header__dropdown-link">
-                                                آموزش شبکه
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </a>
-                            </li>
-                            <li className="main-header__item">
-                                <a href="#" className="main-header__link">
-                                    مقالات
-                                    <i className="fas fa-angle-down main-header__link-icon"></i>
-                                    <ul className="main-header__dropdown">
-                                        <li className="main-header__dropdown-item">
-                                            <a href="#" className="main-header__dropdown-link">
-                                                توسعه وب
-                                            </a>
-                                        </li>
-                                        <li className="main-header__dropdown-item">
-                                            <a href="#" className="main-header__dropdown-link">
-                                                جاوا اسکریپت
-                                            </a>
-                                        </li>
-                                        <li className="main-header__dropdown-item">
-                                            <a href="#" className="main-header__dropdown-link">
-                                                فرانت اند
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </a>
-                            </li>
-                            <li className="main-header__item">
-                                <a href="#" className="main-header__link">
-                                    پایتون
-                                    <i className="fas fa-angle-down main-header__link-icon"></i>
-                                    <ul className="main-header__dropdown">
-                                        <li className="main-header__dropdown-item">
-                                            <a href="#" className="main-header__dropdown-link">
-                                                دوره متخصص پایتون
-                                            </a>
-                                        </li>
-                                        <li className="main-header__dropdown-item">
-                                            <a href="#" className="main-header__dropdown-link">
-                                                دوره هوش مصنوعی با پایتون
-                                            </a>
-                                        </li>
-                                        <li className="main-header__dropdown-item">
-                                            <a href="#" className="main-header__dropdown-link">
-                                                دوره متخصص جنگو
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </a>
-                            </li>
-                            <li className="main-header__item">
-                                <a href="#" className="main-header__link">
-                                    مهارت های نرم
-                                </a>
-                            </li>
+                            {allmenus.map(menu => (
+                                <li className="main-header__item">
+                                    <Link to={menu.href} className="main-header__link">
+                                        {menu.title}
+                                        {
+                                            menu.submenus.length && (
+                                                <>
+                                                    <i className="fas fa-angle-down main-header__link-icon"></i>
+                                                    <ul className="main-header__dropdown">
+                                                        {
+                                                            menu.submenus.map(submenu => (
+                                                                <li className="main-header__dropdown-item">
+                                                                    <Link to={submenu.href} className="main-header__dropdown-link">
+                                                                        {submenu.title}
+                                                                    </Link>
+                                                                </li>
+                                                            ))
+                                                        }
+                                                    </ul>
+                                                </>
+                                            )
+                                        }
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
