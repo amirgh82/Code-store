@@ -15,7 +15,6 @@ export default function NavBar() {
             .then(res => res.json())
             .then(menus => {
                 setAllmenus(menus)
-                console.log(menus);
             })
     }, [])
 
@@ -39,7 +38,7 @@ export default function NavBar() {
                             </li>
 
                             {allmenus.map(menu => (
-                                <li className="main-header__item">
+                                <li className="main-header__item" key={menu._id}>
                                     <Link to={menu.href} className="main-header__link">
                                         {menu.title}
                                         {
@@ -49,7 +48,7 @@ export default function NavBar() {
                                                     <ul className="main-header__dropdown">
                                                         {
                                                             menu.submenus.map(submenu => (
-                                                                <li className="main-header__dropdown-item">
+                                                                <li className="main-header__dropdown-item" key={submenu._id}>
                                                                     <Link to={submenu.href} className="main-header__dropdown-link">
                                                                         {submenu.title}
                                                                     </Link>
