@@ -42,7 +42,7 @@ export default function NavBar() {
                                     <Link to={menu.href} className="main-header__link">
                                         {menu.title}
                                         {
-                                            menu.submenus.length && (
+                                            menu.submenus.length !== 0 && (
                                                 <>
                                                     <i className="fas fa-angle-down main-header__link-icon"></i>
                                                     <ul className="main-header__dropdown">
